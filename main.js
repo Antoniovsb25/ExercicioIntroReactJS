@@ -4,7 +4,7 @@ const NomeContext = React.createContext('nome')
           
             return (
                 <div id="componentes">
-                    <MeuComponente1 onClickIncrementar={props.onClickIncrementar}/>
+                    <MeuComponente1 onClickIncrementar={props.onClickIncrementar} onClickReset={props.onClickReset}/>
                 </div>
             )
         }
@@ -33,9 +33,13 @@ const NomeContext = React.createContext('nome')
                 incrementaContador(contador + 1)
             }
 
+            const clickReset = function() {
+                incrementaContador(0)
+            }
+
             return(
                 <React.Fragment>
-                    <MeuComponente onClickIncrementar={clickIncrementa}/>
+                    <MeuComponente onClickIncrementar={clickIncrementa} onClickReset={clickReset}/>
                     <MeuComponenteIrmao contador={contador}/>
                 </React.Fragment>
             )
@@ -46,7 +50,7 @@ const NomeContext = React.createContext('nome')
             return (
                 <div className="componente1">
                     <MeuComponente2>
-                        <MeuComponente3 onClickIncrementar={props.onClickIncrementar}/>
+                        <MeuComponente3 onClickIncrementar={props.onClickIncrementar} onClickReset={props.onClickReset}/>
                     </MeuComponente2>
                 </div>   
             )
@@ -71,7 +75,7 @@ const NomeContext = React.createContext('nome')
             }, 2000)
             return (
                 <div className="componente3">
-                    <MeuComponente4 telefone={telefone} onClickIncrementar={props.onClickIncrementar}/>
+                    <MeuComponente4 telefone={telefone} onClickIncrementar={props.onClickIncrementar} onClickReset={props.onClickReset}/>
                 </div>
             )
         }
@@ -87,6 +91,7 @@ const NomeContext = React.createContext('nome')
                 <div className="componente4">
                     <p>Componente 4: {idade}, {props.telefone}</p>
                     <button type="button" onClick={props.onClickIncrementar}>Incrementar</button>
+                    <button type="button" onClick={props.onClickReset}>Resetar</button>
                 </div>
             )  
         }

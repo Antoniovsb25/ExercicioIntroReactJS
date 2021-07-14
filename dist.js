@@ -4,7 +4,8 @@ function MeuComponente(props) {
   return /*#__PURE__*/React.createElement("div", {
     id: "componentes"
   }, /*#__PURE__*/React.createElement(MeuComponente1, {
-    onClickIncrementar: props.onClickIncrementar
+    onClickIncrementar: props.onClickIncrementar,
+    onClickReset: props.onClickReset
   }));
 }
 
@@ -30,8 +31,13 @@ function AppComponente() {
     incrementaContador(contador + 1);
   };
 
+  const clickReset = function () {
+    incrementaContador(0);
+  };
+
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(MeuComponente, {
-    onClickIncrementar: clickIncrementa
+    onClickIncrementar: clickIncrementa,
+    onClickReset: clickReset
   }), /*#__PURE__*/React.createElement(MeuComponenteIrmao, {
     contador: contador
   }));
@@ -42,7 +48,8 @@ function MeuComponente1(props) {
   return /*#__PURE__*/React.createElement("div", {
     className: "componente1"
   }, /*#__PURE__*/React.createElement(MeuComponente2, null, /*#__PURE__*/React.createElement(MeuComponente3, {
-    onClickIncrementar: props.onClickIncrementar
+    onClickIncrementar: props.onClickIncrementar,
+    onClickReset: props.onClickReset
   })));
 }
 
@@ -61,7 +68,8 @@ function MeuComponente3(props) {
     className: "componente3"
   }, /*#__PURE__*/React.createElement(MeuComponente4, {
     telefone: telefone,
-    onClickIncrementar: props.onClickIncrementar
+    onClickIncrementar: props.onClickIncrementar,
+    onClickReset: props.onClickReset
   }));
 }
 
@@ -75,7 +83,10 @@ function MeuComponente4(props) {
   }, /*#__PURE__*/React.createElement("p", null, "Componente 4: ", idade, ", ", props.telefone), /*#__PURE__*/React.createElement("button", {
     type: "button",
     onClick: props.onClickIncrementar
-  }, "Incrementar"));
+  }, "Incrementar"), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: props.onClickReset
+  }, "Resetar"));
 }
 
 ReactDOM.render( /*#__PURE__*/React.createElement(AppComponente, null), document.getElementById('app'));
